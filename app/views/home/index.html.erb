@@ -1,0 +1,27 @@
+<%= form_tag home_index_path, :method => 'get', class: 'form-group' do %>
+  <p>
+    <%= label_tag :search %>
+    <%= text_field_tag :search, params[:search], class: 'form-control' %>
+    <%= submit_tag "Search", class: "btn btn-warning btn-lg", :placeholder => "e.g. Tokyo museums, Seattle cafes, Dublin pubs, etc." %>
+  </p>
+<% end %>
+</div>
+
+<!-- LEFT SIDE -->
+<div class="col-sm-9">
+  <div class="list-group results">
+  	<% if @results %>
+    <h3><a class="list-group-item active">Search Results</a></h3>
+    <!-- LIST ALL SEARCH RESULTS -->
+      <% @results['results'].each do |r| %>
+        <div class="list-group-item">
+          <h4 class="list-group-item-heading"><%= link_to r['name'], r['place_id'].to_s %></h4>
+          <p class="list-group-item-text">
+            <%= r['formatted_address'] %>
+            <%= link_to "Add Article", new_article_path, class: "btn btn-info" %>
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
