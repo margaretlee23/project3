@@ -1,7 +1,8 @@
 class Favorite < ActiveRecord::Base
   validates :name, presence: true
-  validate :address, presence: true
-
-  belongs_to :list
+  validates :address, presence: true
   
+  # Relationships
+  belongs_to :list
+
 end

@@ -56,9 +56,17 @@
 }
 
     </style>
+
+
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
 
     <script>
+    // $.post('/lists', {title:"party", user_id:1})
+    // $.post('/favorites', {name:"house", address:"1 surf way" , list_id:1})
+
+    var placeName;
+    var placeAddress;
+
 function initialize() {
   var mapOptions = {
     center: new google.maps.LatLng(-33.8688, 151.2195),
@@ -139,12 +147,23 @@ function initialize() {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
+
+
     </script>
   </head>
   <body>
 
 
   <p>Saving all your favorite things in one place</p>
+
+  <select id="dropDown"><% @lists.each do |field| %>
+        <option value="<%= field.id %>"><%= field.title %></option>
+
+    <% end %>
+  </select>
+
+  <button id="listButton">Create List</button>
+
     <%= link_to "Favorite It", class: "btn btn-info" %>
 
 
@@ -164,6 +183,22 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <label for="changetype-geocode">Geocodes</label>
     </div>
     <div id="map-canvas"></div>
+
+<script type="text/javascript">
+    
+  $("#listButton").click(function() {
+      var newList = prompt("What do you want to name your list?");
+      $.post('/lists', {title:newList, user_id:1}).done(function(result){
+          $("#dropDown").append('<option value="'+ result.id + '">' + result.title + '</option>')
+          console.log(result);
+      });
+  
+      return false;
+  });
+
+</script>
+
+
   </body>
 </html>
 
