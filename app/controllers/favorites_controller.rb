@@ -1,9 +1,10 @@
 class FavoritesController < ApplicationController
+before_action :authenticate_user!
+
 
    def create
-        # new_list = params.require(:list).permit(:title, :user_id)
-        # @list = @user.lists.create(new_list)
-        Favorite.create(name:params[:name], address:params[:address], list_id:params[:list_id])
+    
+        @favorite = Favorite.create(name:params[:name], address:params[:address], list_id:params[:list_id])
         respond_to do |format|
             # format.html { redirect_to "/users/#{@user.id}/lists/#{@list.id}" }
             format.html { render json: @favorite }
