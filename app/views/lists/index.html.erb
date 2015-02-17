@@ -1,0 +1,9 @@
+<% @lists.each do |list| %>
+	<div class="list-wrapper">
+		<%= link_to list.title, list_path(list) %>
+		<%= button_to  "delete", list, method: :delete, action: 'destroy' %>
+	</div>
+<%end%>
+
+
+

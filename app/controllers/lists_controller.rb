@@ -3,9 +3,9 @@ class ListsController < ApplicationController
 
     def index
         @lists = List.all
-        
+     
         respond_to do |format|
-            format.html { render json: @lists }
+            format.html
             format.json { render json: @lists }
         end
     end
@@ -21,9 +21,26 @@ class ListsController < ApplicationController
     end
 
     def show
+        @list = List.find(params[:id])
+        @favorites = @list.favorites
+    end
 
 
+      def edit
+            id = params[:id]
+            @list = List.find(id)
+            render :edit
+    end
 
+    def destroy
+        id = params[:id]
+        list = List.find(id)
+        list.destroy
+        
+        respond_to do |format|
+            format.html { redirect_to lists_path }
+            format.json { render json: @list }
+        end 
     end
 
 

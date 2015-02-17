@@ -1,3 +1,39 @@
+#                   Prefix Verb   URI Pattern                    Controller#Action
+#         new_user_session GET    /users/sign_in(.:format)       users/sessions#new
+#             user_session POST   /users/sign_in(.:format)       users/sessions#create
+#     destroy_user_session DELETE /users/sign_out(.:format)      users/sessions#destroy
+#            user_password POST   /users/password(.:format)      devise/passwords#create
+#        new_user_password GET    /users/password/new(.:format)  devise/passwords#new
+#       edit_user_password GET    /users/password/edit(.:format) devise/passwords#edit
+#                          PATCH  /users/password(.:format)      devise/passwords#update
+#                          PUT    /users/password(.:format)      devise/passwords#update
+# cancel_user_registration GET    /users/cancel(.:format)        devise/registrations#cancel
+#        user_registration POST   /users(.:format)               devise/registrations#create
+#    new_user_registration GET    /users/sign_up(.:format)       devise/registrations#new
+#   edit_user_registration GET    /users/edit(.:format)          devise/registrations#edit
+#                          PATCH  /users(.:format)               devise/registrations#update
+#                          PUT    /users(.:format)               devise/registrations#update
+#                          DELETE /users(.:format)               devise/registrations#destroy
+#                    lists GET    /lists(.:format)               lists#index
+#                          POST   /lists(.:format)               lists#create
+#                 new_list GET    /lists/new(.:format)           lists#new
+#                edit_list GET    /lists/:id/edit(.:format)      lists#edit
+#                     list GET    /lists/:id(.:format)           lists#show
+#                          PATCH  /lists/:id(.:format)           lists#update
+#                          PUT    /lists/:id(.:format)           lists#update
+#                          DELETE /lists/:id(.:format)           lists#destroy
+#                favorites GET    /favorites(.:format)           favorites#index
+#                          POST   /favorites(.:format)           favorites#create
+#             new_favorite GET    /favorites/new(.:format)       favorites#new
+#            edit_favorite GET    /favorites/:id/edit(.:format)  favorites#edit
+#                 favorite GET    /favorites/:id(.:format)       favorites#show
+#                          PATCH  /favorites/:id(.:format)       favorites#update
+#                          PUT    /favorites/:id(.:format)       favorites#update
+#                          DELETE /favorites/:id(.:format)       favorites#destroy
+#               home_index GET    /home(.:format)                home#index
+#                     home GET    /home/:id(.:format)            home#show
+#                     root GET    /                              home#index
+
 Rails.application.routes.draw do
 
   devise_for :users, controllers: {
@@ -10,6 +46,8 @@ Rails.application.routes.draw do
   resources :lists
   resources :favorites
 
+  
+  # root to: '/im-a-new-user', "home#landing" as: "landing_page"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
