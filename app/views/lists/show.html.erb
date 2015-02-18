@@ -1,5 +1,15 @@
-<%= @list.title %>
+
+<div class="favorite-wrapper">
+<div id="title"><%= @list.title %></div>
 
 <% @favorites.each do |favorite| %>
-	<li><%= favorite.name %></li>
+	<li class="fav"><%= favorite.name %></li>
+	<li class="add"><%= favorite.address %></li>
 <% end %>
+
+</div>
+
+ <%= button_to "Homepage", home_index_path, :class => "button", :method => :get  %>
+
+ <%= button_to "Back to Lists", lists_path, :class => "button", :method => :get  %>
+
