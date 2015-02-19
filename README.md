@@ -1,6 +1,6 @@
 # project3
 
-App Name: Lst.io
+App Name: FavMint
 
 Problem Statement: 1. Margaret, a NYC girl, moved to SF a few months ago and wants to find the best <blank> of SF but/because - Yelp and other ratings apps aren't helpful and ratings usually lie in the middle not clearly indicating of a place is great or terrible. This usually wastes time, money and energy. Margaret also gets really mad when she has a bad experience. 2. Margaret also has a really bad memory and forgets her favorites. When her friend asks her for recommendations, she never remembers. 
 
