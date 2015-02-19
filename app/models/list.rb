@@ -2,6 +2,6 @@ class List < ActiveRecord::Base
   validates :title, presence: true
 
   belongs_to :user
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
 
 end
